@@ -83,6 +83,30 @@ kubectl get nodes
 diff cluster-1.17.yaml \
     cluster-1.18.yaml
 
+
+```
+# kubectl get nodes
+NAME                            STATUS   ROLES    AGE   VERSION
+ip-192-168-61-30.ec2.internal   Ready    <none>   28m   v1.17.12-eks-7684af
+root@ubuntu100:~/eksctl-demo# kubectl create ns test
+namespace/test created
+root@ubuntu100:~/eksctl-demo# kubectl get ns        
+NAME              STATUS   AGE
+default           Active   35m
+kube-node-lease   Active   35m
+kube-public       Active   35m
+kube-system       Active   35m
+test              Active   7s
+root@ubuntu100:~/eksctl-demo# eksctl get cluster
+2021-05-20 01:12:28 [ℹ]  eksctl version 0.50.0
+2021-05-20 01:12:28 [ℹ]  using region us-east-1
+NAME	REGION		EKSCTL CREATED
+c1	us-east-1	True
+
+```
+
+
+
 eksctl upgrade cluster \
     --config-file cluster-1.18.yaml
 
