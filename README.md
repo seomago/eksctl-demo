@@ -3,18 +3,18 @@
 # How to Create and Manage AWS EKS clusters #
 # https://youtu.be/pNECqaxyewQ              #
 #############################################
+# Install the CLI from https://eksctl.io/introduction/#installation
 
 #########
 # Setup #
 #########
-
-# Install the CLI from https://eksctl.io/introduction/#installation
 
 export AWS_ACCESS_KEY_ID=[...]
 
 export AWS_SECRET_ACCESS_KEY=[...]
 
 export KUBECONFIG=$PWD/kubeconfig.yaml
+ls -l $HOME/.kube/config
 
 ###############################
 # How NOT to create a cluster #
@@ -25,8 +25,8 @@ export KUBECONFIG=$PWD/kubeconfig.yaml
 
 # Do NOT do this!
 # eksctl create cluster \
-#     --name devops-catalog \
-#     --region us-east-2 \
+#     --name c1 \
+#     --region us-east-1 \
 #     --version 1.18 \
 #     --nodegroup-name primary \
 #     --node-type t2.small \
@@ -41,8 +41,7 @@ export KUBECONFIG=$PWD/kubeconfig.yaml
 # Creating a cluster #
 ######################
 
-git clone \
-    https://github.com/vfarcic/eksctl-demo.git
+git clone https://github.com/seomago/eksctl-demo.git
 
 cd eksctl-demo
 
@@ -59,7 +58,7 @@ eksctl create cluster \
 
 # Open AWS Web Console and make sure that us-east-2 is selected
 
-eksctl get clusters --region us-east-2
+eksctl get clusters --region us-east-1
 
 kubectl get nodes
 
@@ -69,7 +68,7 @@ kubectl get nodes
 
 # Do NOT do this
 # eksctl scale nodegroup \
-#     --cluster devops-catalog \
+#     --cluster c1 \
 #     --nodes 4 \
 #     --name primary
 
